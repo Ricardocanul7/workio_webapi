@@ -19,7 +19,7 @@ namespace workio_webapi.Services
             _context = context;
         }
 
-        [HttpPost("usuario/[action]")]
+        [HttpPost]
         public async Task<ActionResult<Usuario>> RegistroUsuario(Usuario usuario)
         {
             string contraseniaDecrypted = usuario.Contrasenia;

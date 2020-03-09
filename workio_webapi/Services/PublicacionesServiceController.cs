@@ -13,14 +13,26 @@ namespace workio_webapi.Services
     public class PublicacionesServiceController : ControllerBase
     {
         // Comienza desde 0 como un arreglo
-        [HttpGet]
-        public IEnumerable<PublicacionTrabajo> GetPublicacionesOffset(int pageNumber, int range)
+        [HttpGet("[Action]")]
+        public IEnumerable<PublicacionTrabajo> GetFirstPublicaciones(int pageNumber, int range)
         {
             int rowInit = pageNumber * range;
 
             using(var db = new dbworkioContext())
             {
-                var results = db.PublicacionTrabajo.Skip(rowInit).Take(range);
+                var results = db.PublicacionTrabajo.OrderBy(p => p.FechaPublicacion).Skip(rowInit).Take(range);
+                return results.ToList();
+            }
+        }
+
+        [HttpGet("[Action]")]
+        public IEnumerable<PublicacionTrabajo> GetLastPublicaciones(int pageNumber, int range)
+        {
+            int rowInit = pageNumber * range;
+
+            using (var db = new dbworkioContext())
+            {
+                var results = db.PublicacionTrabajo.OrderByDescending(p => p.FechaPublicacion).Skip(rowInit).Take(range);
                 return results.ToList();
             }
         }
