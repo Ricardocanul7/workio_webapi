@@ -14,13 +14,13 @@ namespace workio_webapi.Services
     {
         // Comienza desde 0 como un arreglo
         [HttpGet]
-        public IEnumerable<PublicacionTrabajo> GetPublicacionesOffset(int offset)
+        public IEnumerable<PublicacionTrabajo> GetPublicacionesOffset(int pageNumber, int range)
         {
-            int range = 10;
+            int rowInit = pageNumber * range;
 
             using(var db = new dbworkioContext())
             {
-                var results = db.PublicacionTrabajo.Skip(offset).Take(range);
+                var results = db.PublicacionTrabajo.Skip(rowInit).Take(range);
                 return results.ToList();
             }
         }
