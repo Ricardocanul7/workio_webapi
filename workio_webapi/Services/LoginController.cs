@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.IdentityModel.Tokens.Jwt;
 using System.Linq;
 using System.Security.Claims;
@@ -11,6 +12,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using Microsoft.IdentityModel.Tokens;
 using workio_webapi.Models;
+using workio_webapi.Security;
 
 namespace workio_webapi.Services
 {
@@ -79,6 +81,8 @@ namespace workio_webapi.Services
             Usuario user = null;
             dbworkioContext db = new dbworkioContext();
 
+            login.Contrasenia = EncryptPasswords.HashPassword(login.Contrasenia);
+
             var usertemp = db.Usuario.Where(u => u.Username == login.Username && u.Contrasenia == login.Contrasenia);
             if(usertemp.Count() > 0)
             {
@@ -87,6 +91,38 @@ namespace workio_webapi.Services
 
             return user;
         }
+
+        /** Se crea metodo para encriptar todas las contraseñas para que se pueda usar los metodos que ya hacen login y registro con la contraseña encryptada (SOLO USAR UNA VEZ, HA SIDO COMENTADO PORQUE YA HA SIDO USADO) */
+        //[HttpGet("[Action]")]
+        //public async Task<IActionResult> EncryptPasswordAll()
+        //{
+        //    List<Usuario> listUsers;
+        //    using (var db = new dbworkioContext())
+        //    {
+        //        listUsers = db.Usuario.ToList();
+        //    }
+
+        //    using(var db = new dbworkioContext())
+        //    {
+        //        for(int i = 0; i < listUsers.Count; i++)
+        //        {
+        //            listUsers[i].Contrasenia = EncryptPasswords.HashPassword(listUsers[i].Contrasenia);
+
+        //            db.Entry(listUsers[i]).State = Microsoft.EntityFrameworkCore.EntityState.Modified;
+        //        }
+
+        //        try
+        //        {
+        //            await db.SaveChangesAsync();
+        //            return Ok();
+        //        }
+        //        catch (Exception err)
+        //        {
+        //            Debug.WriteLine(err.Message);
+        //            return NotFound();
+        //        }
+        //    }
+        //}
 
         //[Authorize]
         //[HttpPost("Post")]
