@@ -36,5 +36,17 @@ namespace workio_webapi.Services
                 return results.ToList();
             }
         }
+
+        [HttpGet("[Action]")]
+        public IEnumerable<PublicacionTrabajo> GetLastPublicacionesByCategoria(string categoria, int pageNumber, int range)
+        {
+            int rowInit = pageNumber * range;
+
+            using (var db = new dbworkioContext())
+            {
+                var results = db.PublicacionTrabajo.Where(p => p.Categoria.Descripcion.Contains(categoria)).OrderByDescending(p => p.FechaPublicacion).Skip(rowInit).Take(range);
+                return results.ToList();
+            }
+        }
     }
 }
