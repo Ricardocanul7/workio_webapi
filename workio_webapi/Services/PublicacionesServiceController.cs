@@ -48,5 +48,27 @@ namespace workio_webapi.Services
                 return results.ToList();
             }
         }
+
+        [HttpGet("[Action]")]
+        public IEnumerable<PublicacionTrabajo> GetLastPublicacionesByUserPaged(int idUser, int pageNumber, int range)
+        {
+            int rowInit = pageNumber * range;
+
+            using (var db = new dbworkioContext())
+            {
+                var results = db.PublicacionTrabajo.Where(p => p.PersonaOrigenId == idUser).Skip(rowInit).Take(range);
+                return results.ToList();
+            }
+        }
+
+        [HttpGet("[Action]")]
+        public IEnumerable<PublicacionTrabajo> GetLastPublicacionesByUserAll(int idUser)
+        {
+            using (var db = new dbworkioContext())
+            {
+                var results = db.PublicacionTrabajo.Where(p => p.PersonaOrigenId == idUser);
+                return results.ToList();
+            }
+        }
     }
 }
