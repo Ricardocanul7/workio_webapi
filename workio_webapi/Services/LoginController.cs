@@ -93,36 +93,38 @@ namespace workio_webapi.Services
         }
 
         /** Se crea metodo para encriptar todas las contraseñas para que se pueda usar los metodos que ya hacen login y registro con la contraseña encryptada (SOLO USAR UNA VEZ, HA SIDO COMENTADO PORQUE YA HA SIDO USADO) */
-        //[HttpGet("[Action]")]
-        //public async Task<IActionResult> EncryptPasswordAll()
-        //{
-        //    List<Usuario> listUsers;
-        //    using (var db = new dbworkioContext())
-        //    {
-        //        listUsers = db.Usuario.ToList();
-        //    }
+        /*
+        [HttpGet("[Action]")]
+        public async Task<IActionResult> EncryptPasswordAll()
+        {
+            List<Usuario> listUsers;
+            using (var db = new dbworkioContext())
+            {
+                listUsers = db.Usuario.ToList();
+            }
 
-        //    using(var db = new dbworkioContext())
-        //    {
-        //        for(int i = 0; i < listUsers.Count; i++)
-        //        {
-        //            listUsers[i].Contrasenia = EncryptPasswords.HashPassword(listUsers[i].Contrasenia);
+            using (var db = new dbworkioContext())
+            {
+                for (int i = 0; i < listUsers.Count; i++)
+                {
+                    listUsers[i].Contrasenia = EncryptPasswords.HashPassword(listUsers[i].Contrasenia);
 
-        //            db.Entry(listUsers[i]).State = Microsoft.EntityFrameworkCore.EntityState.Modified;
-        //        }
+                    db.Entry(listUsers[i]).State = Microsoft.EntityFrameworkCore.EntityState.Modified;
+                }
 
-        //        try
-        //        {
-        //            await db.SaveChangesAsync();
-        //            return Ok();
-        //        }
-        //        catch (Exception err)
-        //        {
-        //            Debug.WriteLine(err.Message);
-        //            return NotFound();
-        //        }
-        //    }
-        //}
+                try
+                {
+                    await db.SaveChangesAsync();
+                    return Ok();
+                }
+                catch (Exception err)
+                {
+                    Debug.WriteLine(err.Message);
+                    return NotFound();
+                }
+            }
+        }
+        */
 
         //[Authorize]
         //[HttpPost("Post")]

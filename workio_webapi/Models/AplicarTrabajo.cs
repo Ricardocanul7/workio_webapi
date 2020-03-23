@@ -8,6 +8,7 @@ namespace workio_webapi.Models
         public int Id { get; set; }
         public int PublicacionId { get; set; }
         public int PersonaId { get; set; }
+        public string DescripcionSolucion { get; set; }
         public decimal Presupuesto { get; set; }
         public DateTime Fecha { get; set; }
 

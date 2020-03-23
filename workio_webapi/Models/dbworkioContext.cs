@@ -58,6 +58,10 @@ namespace workio_webapi.Models
 
                 entity.Property(e => e.Id).HasColumnName("ID");
 
+                entity.Property(e => e.DescripcionSolucion)
+                    .IsRequired()
+                    .HasColumnName("DESCRIPCION_SOLUCION");
+
                 entity.Property(e => e.Fecha)
                     .HasColumnName("FECHA")
                     .HasColumnType("datetime");
@@ -115,7 +119,7 @@ namespace workio_webapi.Models
                 entity.ToTable("CATEGORIA_TRABAJO");
 
                 entity.HasIndex(e => e.Descripcion)
-                    .HasName("UQ__CATEGORI__794449EF86BD8AC2")
+                    .HasName("UQ__CATEGORI__794449EF6996D293")
                     .IsUnique();
 
                 entity.Property(e => e.Id).HasColumnName("ID");
@@ -248,7 +252,7 @@ namespace workio_webapi.Models
                 entity.ToTable("ESTADO_PUBLICACION_TRABAJO");
 
                 entity.HasIndex(e => e.Descripcion)
-                    .HasName("UQ__ESTADO_P__794449EF1876D9E8")
+                    .HasName("UQ__ESTADO_P__794449EFB4FE2F59")
                     .IsUnique();
 
                 entity.Property(e => e.Id).HasColumnName("ID");
@@ -264,7 +268,7 @@ namespace workio_webapi.Models
                 entity.ToTable("ESTADO_USUARIO");
 
                 entity.HasIndex(e => e.Estatus)
-                    .HasName("UQ__ESTADO_U__29E79E552C6378DA")
+                    .HasName("UQ__ESTADO_U__29E79E55AF5E436B")
                     .IsUnique();
 
                 entity.Property(e => e.Id).HasColumnName("ID");
@@ -354,7 +358,7 @@ namespace workio_webapi.Models
                 entity.ToTable("METODO_PAGO");
 
                 entity.HasIndex(e => e.Descripcion)
-                    .HasName("UQ__METODO_P__794449EFA99D42F3")
+                    .HasName("UQ__METODO_P__794449EFBF7CDFDA")
                     .IsUnique();
 
                 entity.Property(e => e.Id).HasColumnName("ID");
@@ -371,7 +375,7 @@ namespace workio_webapi.Models
                 entity.ToTable("MODULOS");
 
                 entity.HasIndex(e => e.Nombre)
-                    .HasName("UQ__MODULOS__B21D0AB9C3B729E6")
+                    .HasName("UQ__MODULOS__B21D0AB93526224A")
                     .IsUnique();
 
                 entity.Property(e => e.Id).HasColumnName("ID");
@@ -427,7 +431,7 @@ namespace workio_webapi.Models
                 entity.ToTable("PERFIL");
 
                 entity.HasIndex(e => e.TipoUsuario)
-                    .HasName("UQ__PERFIL__D13E583BFEC8BFC4")
+                    .HasName("UQ__PERFIL__D13E583BD3A8E913")
                     .IsUnique();
 
                 entity.Property(e => e.Id).HasColumnName("ID");
@@ -472,7 +476,7 @@ namespace workio_webapi.Models
                 entity.ToTable("PERMISOS");
 
                 entity.HasIndex(e => e.Codigo)
-                    .HasName("UQ__PERMISOS__CC87E126F7536734")
+                    .HasName("UQ__PERMISOS__CC87E1261451674F")
                     .IsUnique();
 
                 entity.Property(e => e.Id).HasColumnName("ID");
@@ -630,7 +634,7 @@ namespace workio_webapi.Models
                 entity.ToTable("TIPO_DOCUMENTO");
 
                 entity.HasIndex(e => e.Nombre)
-                    .HasName("UQ__TIPO_DOC__B21D0AB99B33FA56")
+                    .HasName("UQ__TIPO_DOC__B21D0AB95EB48255")
                     .IsUnique();
 
                 entity.Property(e => e.IdTipoDocumento).HasColumnName("ID_TIPO_DOCUMENTO");
@@ -647,7 +651,7 @@ namespace workio_webapi.Models
                 entity.ToTable("TIPOS_REPORTES");
 
                 entity.HasIndex(e => e.Tipo)
-                    .HasName("UQ__TIPOS_RE__B6FCAAA2D6687A0F")
+                    .HasName("UQ__TIPOS_RE__B6FCAAA28F726BEA")
                     .IsUnique();
 
                 entity.Property(e => e.Id).HasColumnName("ID");
@@ -691,11 +695,11 @@ namespace workio_webapi.Models
                 entity.ToTable("USUARIO");
 
                 entity.HasIndex(e => e.Email)
-                    .HasName("UQ__USUARIO__161CF724A6998098")
+                    .HasName("UQ__USUARIO__161CF724E46BF7AB")
                     .IsUnique();
 
                 entity.HasIndex(e => e.Username)
-                    .HasName("UQ__USUARIO__B15BE12E1B6F0294")
+                    .HasName("UQ__USUARIO__B15BE12E42408751")
                     .IsUnique();
 
                 entity.Property(e => e.Id).HasColumnName("ID");
